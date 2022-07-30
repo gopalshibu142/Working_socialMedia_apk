@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1089749150546",
+    "firebase_url": "https://flutterproject1-28530-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "flutterproject1-28530",
+    "storage_bucket": "flutterproject1-28530.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089749150546:android:bda0d9d6d38474961d288b",
+        "android_client_info": {
+          "package_name": "com.example.loginapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1089749150546-kjjjo7jn4p75uo19ucbam0lifkbmt0js.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxSvVrXmBuBg_La1gu4NACfib1GoMq4N0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1089749150546-kjjjo7jn4p75uo19ucbam0lifkbmt0js.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1089749150546-brfol93ukbj2v47hi9c9nghhmc5ku09r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.loginapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
