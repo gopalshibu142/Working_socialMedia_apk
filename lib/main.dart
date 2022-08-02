@@ -170,6 +170,7 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
   }
 
   Widget build(BuildContext context) {
+    var txtdt = "";
     return MaterialApp(
       title: 'app with login',
       home: Scaffold(
@@ -267,9 +268,14 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                                     height: 10,
                                   ),
                                   GestureDetector(
+                                    
                                     onTap: () {
                                       setState(() {
-                                        _controller.forward();
+                                        _controller
+                                          .forward(
+                                            from: 0.5,
+                                          ).then((value) =>
+                                              _controller..reset()..animateTo(0.5));
                                       });
                                     },
                                     child: Container(
@@ -282,7 +288,10 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                                             // Lottie file and start the animation.
                                             _controller
                                               ..duration = composition.duration
-                                              ..repeat();
+                                              ..forward(
+                                            from: 0.5,
+                                          ).then((value) =>
+                                              _controller..reset()..animateTo(0.5));;
 
                                             //..forward(from: 0.0)
                                           },
@@ -290,7 +299,7 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                                   ),
                                   SizedBox(
                                     height: 10,
-                                  )
+                                  ),
                                 ],
                               ),
                             ),

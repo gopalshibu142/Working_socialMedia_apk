@@ -217,77 +217,14 @@ void snackBar(var text, var msg, var contenttype, context) {
               );
             }));
   }
+//   DatabaseReference starCountRef =
+//         FirebaseDatabase.instance.ref('posts');
+// starCountRef.onValue.listen((DatabaseEvent event) {
+//     final data = event.snapshot.value;
+//     updateStarCount(data);
+// });
 
-  Widget postField(context){
-    return ListView.builder(
-        padding: const EdgeInsets.all(8),
-        itemCount: bpid.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Column(
-            children: [
-              SizedBox(),
-              GlowContainer(
-                glowColor: Color.fromARGB(255, 124, 54, 244),
-                blurRadius: 10,
-                child: Container(
-                  height: 150,
-                  decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [Color(0xFF3023996), Color(0xFF0E0F26)])),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                                padding: EdgeInsets.all(5),
-                                child: Text(busers[index])),
-                            Spacer(),
-                            Container(
-                                padding: EdgeInsets.all(5),
-                                child: Text(btimes[index]))
-                          ],
-                        ),
-                        Container(
-                            alignment: Alignment.center,
-                            width: 350,
-                            child: Text('${bcontent[index]}')),
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 50,
-                            ),
-                            Container(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.all(5),
-                              child: LikeButton(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                size: 25,
-                                circleColor: CircleColor(
-                                    start: Color(0xFF5f23a5),
-                                    end: Color(0xFF5f23a5)),
-                                bubblesColor: BubblesColor(
-                                  dotPrimaryColor: Colors.red,
-                                  dotSecondaryColor: Color(0xFF5f23a5),
-                                ),
-                                likeCount: int.parse(bplikes[index]),
-                              ),
-                            ),
-                          ],
-                        )
-                      ]),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              )
-            ],
-          );
-        });
-  }
+ 
   
   Widget? some;
   

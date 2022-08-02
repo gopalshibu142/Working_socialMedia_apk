@@ -25,19 +25,20 @@ class _homepageState extends State<homepage> {
 
   @override
   void initState() {
-    changeWid();
     super.initState();
-    
+    changeWid();
     pageController = PageController(initialPage: selectedIndex);
   }
 
   Future? changeWid() {
-    some = loadingShimmer(context);
-    Future.delayed(Duration(seconds: 3), () {
-      setState(() {
-        some = postField(context);
-      });
+    setState(() {
+      some = loadingShimmer(context);
     });
+    
+    reLoad().then((value) => setState(() {
+                stateChange();
+          some = postField(context);
+        }));
   }
 
   int selectedIndex = 0;
@@ -57,10 +58,9 @@ class _homepageState extends State<homepage> {
           Spacer(),
           TextButton(
             onPressed: () async {
-              await reLoad();
-              setState(() {
-                stateChange();
-              });
+              changeWid();
+
+              
             },
             child: const GlowText(
               "VazhaThopp",
@@ -120,6 +120,77 @@ class _homepageState extends State<homepage> {
       ],
     );
   }
+}
+
+Widget postField(context) {
+  return ListView.builder(
+      padding: const EdgeInsets.all(8),
+      itemCount: bpid.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Column(
+          children: [
+            SizedBox(),
+            GlowContainer(
+              glowColor: Color.fromARGB(255, 124, 54, 244),
+              blurRadius: 10,
+              child: Container(
+                height: 150,
+                decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [Color(0xFF3023996), Color(0xFF0E0F26)])),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                              padding: EdgeInsets.all(5),
+                              child: Text(busers[index])),
+                          Spacer(),
+                          Container(
+                              padding: EdgeInsets.all(5),
+                              child: Text(btimes[index]))
+                        ],
+                      ),
+                      Container(
+                          alignment: Alignment.center,
+                          width: 350,
+                          child: Text('${bcontent[index]}')),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 50,
+                          ),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            padding: EdgeInsets.all(5),
+                            child: LikeButton(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              size: 25,
+                              circleColor: CircleColor(
+                                  start: Color(0xFF5f23a5),
+                                  end: Color(0xFF5f23a5)),
+                              bubblesColor: BubblesColor(
+                                dotPrimaryColor: Colors.red,
+                                dotSecondaryColor: Color(0xFF5f23a5),
+                              ),
+                              likeCount: int.parse(bplikes[index]),
+                            ),
+                          ),
+                        ],
+                      )
+                    ]),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            )
+          ],
+        );
+      });
 }
 
 class profile extends StatelessWidget {
@@ -236,13 +307,16 @@ class _feedState extends State<feed> {
                 dref.child(id).child("content").set(postcont);
                 dref.child(id).child("time").set("${dt.hour}:${dt.minute}");
                 dref.child(id).child("likes").set("0");
-                
-                reLoad();
-                setState(() {
-                  stateChange();
-                });
-
                 Navigator.pop(context);
+                setState(() {
+      some = loadingShimmer(context);
+    });
+    
+    reLoad().then((value) => setState(() {
+                stateChange();
+          some = postField(context);
+        }));
+               
               },
               child: Text("post"))
         ],
